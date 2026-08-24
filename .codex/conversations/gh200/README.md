@@ -7,16 +7,17 @@ This directory contains the public-safe conversation export for Codex session
 - `../../memories/rollout_summaries/2026-08-24-gh200-kv-compression-experiment-handoff.md`:
   compact operational state, results, and the exact next experiment
 
-Raw Codex rollout JSONL, authentication files, developer instructions,
-reasoning records, tool payloads, SQLite state, and caches are deliberately not
-committed because this repository is public.
+The repository also contains the raw rollout JSONL and the single matching
+session-index entry so the original VS Code Codex thread can be restored.
+Authentication files, SQLite state, and caches are not committed.
 
 To continue on a fresh server:
 
 ```bash
 git clone --branch gh200 https://github.com/QuiverDance/codex-backup.git
+cd codex-backup
+bash scripts/restore_codex_session.sh
 ```
 
-Then start Codex in the restored project and ask it to read the handoff and
-visible transcript before taking action.  This is a portable context handoff;
-it is not a byte-for-byte restoration of the original Codex UI thread.
+Run the restore while VS Code/Codex is closed, then reopen VS Code after signing
+in. The raw rollout is imported into the local thread database on startup.

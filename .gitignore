@@ -3,6 +3,10 @@
 !README.md
 
 !.codex/
+!.codex/session_index.jsonl
+!.codex/session_parts/
+!.codex/session_parts/01a032b1-ad6d-7bc2-a677-1004af67a370/
+!.codex/session_parts/01a032b1-ad6d-7bc2-a677-1004af67a370/**
 !.codex/conversations/
 !.codex/conversations/gh200/
 !.codex/conversations/gh200/**
@@ -12,3 +16,4 @@
 
 !scripts/
 !scripts/export_visible_codex_session.py
+!scripts/restore_codex_session.sh
