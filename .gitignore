@@ -1,0 +1,14 @@
+*
+!.gitignore
+!README.md
+
+!.codex/
+!.codex/conversations/
+!.codex/conversations/gh200/
+!.codex/conversations/gh200/**
+!.codex/memories/
+!.codex/memories/rollout_summaries/
+!.codex/memories/rollout_summaries/2026-08-24-gh200-kv-compression-experiment-handoff.md
+
+!scripts/
+!scripts/export_visible_codex_session.py
