@@ -20,4 +20,17 @@ bash scripts/restore_codex_session.sh
 ```
 
 Run the restore while VS Code/Codex is closed, then reopen VS Code after signing
-in. The raw rollout is imported into the local thread database on startup.
+in. Verify that Codex imports the raw rollout into its local thread database:
+
+```bash
+codex resume --all 01a032b1-ad6d-7bc2-a677-1004af67a370
+```
+
+After the earlier transcript appears, press `Ctrl-C`. In VS Code, open the
+Command Palette, run `Developer: Reload Window`, and reopen the Codex sidebar.
+This final reload is required if the panel was open during restoration because
+it can cache the old conversation list. The expected restored thread name is
+`KV 압축 성능 재실험`.
+
+For the full recovery and remote-agent safety notes, see the repository root
+`README.md`.
