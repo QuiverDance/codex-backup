@@ -8,7 +8,7 @@ GH200 Codex session `01a032b1-ad6d-7bc2-a677-1004af67a370`.
   compact operational state, results, and the exact next experiment
 
 The repository-level snapshot contains the raw rollout JSONL and complete
-session index for all six local Codex conversations found at backup time. This
+session index for all local Codex conversations found at backup time. This
 directory remains a readable transcript of the original experiment thread;
 see the root `README.md` and `.codex/session_manifest.tsv` for the complete
 snapshot. Authentication files, SQLite state, and caches are not committed.

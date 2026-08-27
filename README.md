@@ -1,8 +1,8 @@
 # GH200 Codex conversation backup
 
 This orphan branch contains a point-in-time backup of every local Codex
-conversation found on the GH200 server. The current snapshot contains six
-unique sessions; its exact export time is recorded in
+conversation found on the GH200 server, including archived conversations. The
+current snapshot's session count and exact export time are recorded in
 `.codex/session_manifest.tsv`.
 
 ## Snapshot contents
@@ -41,6 +41,8 @@ conversation backup and should be treated accordingly.
 | `01a03c92-4b69-71b0-b263-c43967e70d38` | 오프라인 실험 워크로드 확인 |
 | `01a03d13-635e-7550-914d-cb9bbed50690` | 기존 압축 실험 코드 찾기 |
 | `01a03d78-e8fd-7022-a4fa-9510f9e8f4df` | 서빙 실험 옵션 분석 |
+| `01a04274-25e6-76e2-a545-7ed2d5c3b9fe` | gh200 대화 내역 복원 |
+| `01a0430a-bd9e-7a10-9cc5-91560fd0e7ef` | Check VS Code task cancellation (archived) |
 
 ## Refresh the backup
 
@@ -74,7 +76,7 @@ bash scripts/restore_codex_session.sh
 
 The restore script verifies every reconstructed rollout against the manifest,
 backs up colliding destination session files and `session_index.jsonl`, and
-merges all six threads without changing authentication, configuration, caches,
+merges all backed-up threads without changing authentication, configuration, caches,
 or unrelated sessions.
 
 After the restore succeeds on the destination:
@@ -86,7 +88,7 @@ After the restore succeeds on the destination:
    codex resume --all
    ```
 
-   Confirm that the six session names above appear in the picker, then press
+   Confirm that the session names above appear in the picker, then press
    `Ctrl-C` to exit the verification TUI.
 3. Refresh the destination VS Code Codex conversation list. Open the Command
    Palette, run `Developer: Reload Window`, and reopen the Codex sidebar.
@@ -111,7 +113,7 @@ agent to restart the panel and cannot run `Developer: Reload Window`:
    delay so the response reaches the user.
 4. Never terminate the VS Code server, remote agent, unrelated extension hosts,
    or every `node`/`codex` process. After reconnection, reopen the Codex sidebar
-   and confirm that all six saved names are listed.
+   and confirm that all saved names are listed.
 
 The official Codex CLI command reference for resuming saved chats is at
 <https://developers.openai.com/codex/cli/reference>.

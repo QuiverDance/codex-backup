@@ -5,13 +5,19 @@ part_bytes=196608
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "${script_dir}/.." && pwd)"
 codex_home="${CODEX_HOME:-${HOME}/.codex}"
-source_sessions="${codex_home}/sessions"
 source_index="${codex_home}/session_index.jsonl"
 target_parts="${repo_root}/.codex/session_parts"
 target_manifest="${repo_root}/.codex/session_manifest.tsv"
 target_index="${repo_root}/.codex/session_index.jsonl"
 
-if [[ ! -d "${source_sessions}" || ! -f "${source_index}" ]]; then
+source_session_roots=()
+for source_session_root in \
+  "${codex_home}/sessions" "${codex_home}/archived_sessions"; do
+  [[ ! -d "${source_session_root}" ]] || \
+    source_session_roots+=("${source_session_root}")
+done
+
+if [[ "${#source_session_roots[@]}" -eq 0 || ! -f "${source_index}" ]]; then
   echo "Codex sessions or session index are missing under ${codex_home}." >&2
   exit 1
 fi
@@ -30,7 +36,7 @@ cleanup() {
 trap cleanup EXIT
 
 mapfile -d '' session_files < <(
-  find "${source_sessions}" -type f -name '*.jsonl' -print0 | sort -z
+  find "${source_session_roots[@]}" -type f -name '*.jsonl' -print0 | sort -z
 )
 if [[ "${#session_files[@]}" -eq 0 ]]; then
   echo "No Codex rollout JSONL files were found." >&2
