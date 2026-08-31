@@ -1,9 +1,9 @@
 # GH200 Codex conversation backup
 
-This orphan branch contains a point-in-time backup of every local Codex
-conversation found on the GH200 server, including archived conversations. The
-current snapshot's session count and exact export time are recorded in
-`.codex/session_manifest.tsv`.
+This orphan branch contains a point-in-time backup of active local Codex
+conversations found under `sessions/` on the GH200 server. Deleted conversations
+under `archived_sessions/` are excluded. The current snapshot's session count
+and exact export time are recorded in `.codex/session_manifest.tsv`.
 
 ## Snapshot contents
 
@@ -11,8 +11,8 @@ current snapshot's session count and exact export time are recorded in
   checksums, byte sizes, and part counts
 - `.codex/session_parts/<session-id>/`: chunked raw rollout JSONL for every
   conversation
-- `.codex/session_index.jsonl`: the complete saved-session index at snapshot
-  time, including its original duplicate rename entry
+- `.codex/session_index.jsonl`: the active-session subset of the saved-session
+  index at snapshot time, preserving duplicate rename entries for active IDs
 - `.codex/conversations/gh200/visible-transcript.md`: user/assistant-visible
   transcript for the original GH200 KV experiment thread
 - `.codex/memories/rollout_summaries/2026-08-24-gh200-kv-compression-experiment-handoff.md`:
@@ -33,16 +33,9 @@ conversation backup and should be treated accordingly.
 
 ## Sessions in this snapshot
 
-| Session ID | Saved name |
-| --- | --- |
-| `01a032b1-ad6d-7bc2-a677-1004af67a370` | KV 압축 성능 재실험 |
-| `01a03c0e-ba4f-76d3-a130-6b9078641f0f` | Restore Codex conversations |
-| `01a03c17-4b25-7180-99e5-de0758c74704` | KV 압축 성능 재실험 (2) |
-| `01a03c92-4b69-71b0-b263-c43967e70d38` | 오프라인 실험 워크로드 확인 |
-| `01a03d13-635e-7550-914d-cb9bbed50690` | 기존 압축 실험 코드 찾기 |
-| `01a03d78-e8fd-7022-a4fa-9510f9e8f4df` | 서빙 실험 옵션 분석 |
-| `01a04274-25e6-76e2-a545-7ed2d5c3b9fe` | gh200 대화 내역 복원 |
-| `01a0430a-bd9e-7a10-9cc5-91560fd0e7ef` | Check VS Code task cancellation (archived) |
+The exact active session IDs and paths are listed in
+`.codex/session_manifest.tsv`; their saved names are in
+`.codex/session_index.jsonl`. Deleted or archived session IDs are not included.
 
 ## Refresh the backup
 

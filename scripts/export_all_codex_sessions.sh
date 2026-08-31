@@ -5,19 +5,13 @@ part_bytes=196608
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "${script_dir}/.." && pwd)"
 codex_home="${CODEX_HOME:-${HOME}/.codex}"
+source_sessions="${codex_home}/sessions"
 source_index="${codex_home}/session_index.jsonl"
 target_parts="${repo_root}/.codex/session_parts"
 target_manifest="${repo_root}/.codex/session_manifest.tsv"
 target_index="${repo_root}/.codex/session_index.jsonl"
 
-source_session_roots=()
-for source_session_root in \
-  "${codex_home}/sessions" "${codex_home}/archived_sessions"; do
-  [[ ! -d "${source_session_root}" ]] || \
-    source_session_roots+=("${source_session_root}")
-done
-
-if [[ "${#source_session_roots[@]}" -eq 0 || ! -f "${source_index}" ]]; then
+if [[ ! -d "${source_sessions}" || ! -f "${source_index}" ]]; then
   echo "Codex sessions or session index are missing under ${codex_home}." >&2
   exit 1
 fi
@@ -36,7 +30,7 @@ cleanup() {
 trap cleanup EXIT
 
 mapfile -d '' session_files < <(
-  find "${source_session_roots[@]}" -type f -name '*.jsonl' -print0 | sort -z
+  find "${source_sessions}" -type f -name '*.jsonl' -print0 | sort -z
 )
 if [[ "${#session_files[@]}" -eq 0 ]]; then
   echo "No Codex rollout JSONL files were found." >&2
@@ -106,14 +100,20 @@ manifest_ids = {
     for line in Path(sys.argv[1]).read_text().splitlines()
     if line and not line.startswith("#")
 }
-index_ids = []
-for line in Path(sys.argv[2]).read_text().splitlines():
-    if line.strip():
-        index_ids.append(json.loads(line)["id"])
-if set(index_ids) != manifest_ids:
-    missing = sorted(manifest_ids - set(index_ids))
-    extra = sorted(set(index_ids) - manifest_ids)
-    raise SystemExit(f"session index mismatch: missing={missing}, extra={extra}")
+index_path = Path(sys.argv[2])
+kept_lines = []
+index_ids = set()
+for line in index_path.read_text().splitlines(keepends=True):
+    if not line.strip():
+        continue
+    session_id = json.loads(line)["id"]
+    if session_id in manifest_ids:
+        kept_lines.append(line)
+        index_ids.add(session_id)
+missing = sorted(manifest_ids - index_ids)
+if missing:
+    raise SystemExit(f"session index mismatch: missing={missing}")
+index_path.write_text("".join(kept_lines))
 PY
 
 mkdir -p "${target_parts}" "$(dirname "${target_manifest}")"

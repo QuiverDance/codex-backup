@@ -27,7 +27,7 @@ while IFS=$'\t' read -r session_id session_rel expected_sha256 \
   expected_size expected_part_count; do
   [[ -n "${session_id}" && "${session_id}" != \#* ]] || continue
   if [[ ! "${session_id}" =~ ^[0-9a-f-]{36}$ || \
-        ! "${session_rel}" =~ ^(sessions|archived_sessions)/ || \
+        ! "${session_rel}" =~ ^sessions/ || \
         "${session_rel}" == *..* || \
         ! "${expected_sha256}" =~ ^[0-9a-f]{64}$ || \
         ! "${expected_size}" =~ ^[0-9]+$ || \
