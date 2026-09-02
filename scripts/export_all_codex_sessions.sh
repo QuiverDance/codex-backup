@@ -37,6 +37,20 @@ if [[ "${#session_files[@]}" -eq 0 ]]; then
   exit 1
 fi
 
+declare -A indexed_session_ids=()
+while IFS= read -r indexed_session_id; do
+  indexed_session_ids["${indexed_session_id}"]=1
+done < <(python3 - "${source_index}" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+for line in Path(sys.argv[1]).read_text().splitlines():
+    if line.strip():
+        print(json.loads(line)["id"])
+PY
+)
+
 snapshot_utc="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 {
   printf '# codex_session_manifest_v1\n'
@@ -44,6 +58,7 @@ snapshot_utc="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   printf '# fields=session_id\trelative_path\tsha256\tsize_bytes\tpart_count\n'
 } > "${manifest_tmp}"
 
+exported_count=0
 for source_session in "${session_files[@]}"; do
   session_name="$(basename "${source_session}")"
   if [[ ! "${session_name}" =~ ([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\.jsonl$ ]]; then
@@ -51,6 +66,9 @@ for source_session in "${session_files[@]}"; do
     exit 1
   fi
   session_id="${BASH_REMATCH[1]}"
+  if [[ -z "${indexed_session_ids[${session_id}]+present}" ]]; then
+    continue
+  fi
   session_rel="${source_session#"${codex_home}/"}"
   snapshot_session="${snapshot_root}/${session_rel}"
   session_parts="${new_parts_root}/${session_id}"
@@ -87,7 +105,13 @@ PY
   printf '%s\t%s\t%s\t%s\t%s\n' \
     "${session_id}" "${session_rel}" "${session_sha256}" \
     "${session_size}" "${part_count}" >> "${manifest_tmp}"
+  exported_count=$((exported_count + 1))
 done
+
+if [[ "${exported_count}" -eq 0 ]]; then
+  echo "No indexed active Codex sessions were found." >&2
+  exit 1
+fi
 
 cp -p "${source_index}" "${index_tmp}"
 python3 - "${manifest_tmp}" "${index_tmp}" <<'PY'
@@ -122,5 +146,5 @@ cp -a "${new_parts_root}/." "${target_parts}/"
 install -m 644 "${manifest_tmp}" "${target_manifest}"
 install -m 644 "${index_tmp}" "${target_index}"
 
-echo "Exported ${#session_files[@]} Codex sessions at ${snapshot_utc}."
+echo "Exported ${exported_count} indexed active Codex sessions at ${snapshot_utc}."
 echo "Manifest: ${target_manifest}"
