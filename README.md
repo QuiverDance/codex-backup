@@ -3,8 +3,9 @@
 This orphan branch contains a point-in-time backup of indexed active local
 Codex conversations found under `sessions/` on the GH200 server. Deleted
 conversations under `archived_sessions/` and unindexed internal helper sessions
-are excluded. The current snapshot's session count and exact export time are
-recorded in `.codex/session_manifest.tsv`.
+are excluded. Credential-shaped values are redacted from the exported snapshot
+without modifying the local source files. The current snapshot's session count
+and exact export time are recorded in `.codex/session_manifest.tsv`.
 
 ## Snapshot contents
 

@@ -76,6 +76,35 @@ for source_session in "${session_files[@]}"; do
   mkdir -p "$(dirname "${snapshot_session}")" "${session_parts}"
   cp -p "${source_session}" "${snapshot_session}"
 
+  # Conversation logs can contain credentials copied by users or emitted by
+  # tools. Keep the local source intact, but never publish those credentials
+  # in the repository snapshot.
+  python3 - "${snapshot_session}" <<'PY'
+import re
+import sys
+from pathlib import Path
+
+path = Path(sys.argv[1])
+data = path.read_bytes()
+redactions = (
+    (rb"github_pat_[A-Za-z0-9_]{20,255}", b"[REDACTED_GITHUB_TOKEN]"),
+    (rb"gh[pousr]_[A-Za-z0-9]{20,255}", b"[REDACTED_GITHUB_TOKEN]"),
+    (
+        rb"sk-[A-Za-z0-9_-]{20,300}(?![A-Za-z0-9_-])",
+        b"[REDACTED_OPENAI_KEY]",
+    ),
+    (rb"AKIA[0-9A-Z]{16}", b"[REDACTED_AWS_ACCESS_KEY]"),
+    (
+        rb"-----BEGIN (?:OPENSSH|RSA|EC|DSA) PRIVATE KEY-----.*?"
+        rb"-----END (?:OPENSSH|RSA|EC|DSA) PRIVATE KEY-----",
+        b"[REDACTED_PRIVATE_KEY]",
+    ),
+)
+for pattern, replacement in redactions:
+    data = re.sub(pattern, replacement, data, flags=re.DOTALL)
+path.write_bytes(data)
+PY
+
   python3 - "${snapshot_session}" "${session_id}" <<'PY'
 import json
 import sys
