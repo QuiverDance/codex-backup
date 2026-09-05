@@ -23,4 +23,6 @@ If access or evidence is missing, state exactly what cannot be verified and requ
 
 When implementation is authorized, make the smallest complete correction that preserves the accepted architecture and outcome. Add the smallest meaningful regression test reproducing the failure at an appropriate existing interface; establish that it fails for the original defect when practical. If automated reproduction is unavailable, retain direct failure evidence and state the coverage limitation.
 
+Use [verification evidence](../code-review/references/verification-evidence.md) for retries and result freshness. Retain the original failure and distinguish a failing check from a check that never ran.
+
 Verify the same representative flow again, then run affected and repository-required checks. Remove temporary instrumentation introduced for diagnosis. Explain the cause, change, evidence, and remaining limits. Report any broader architectural opportunity separately; do not expand this fix into a redesign without authorization.

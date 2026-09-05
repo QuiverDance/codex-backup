@@ -25,6 +25,8 @@ Infer the target from the request and current task. Ask only if materially diffe
 
 An invalid reference needs correction. An empty selected diff means there are no changes in that scope; do not silently substitute another target. Exclude unrelated pre-existing work, but inspect surrounding code where needed to understand impact. Give reviewers the captured patch and new-file contents or precise commands and scope. Check for material target changes before finalizing.
 
+When assessing reported checks, use [verification evidence](references/verification-evidence.md) to distinguish current execution, justified reuse, and unexecuted work. Share the same evidence record with reviewers so they do not independently repeat the same check. Review stays read-only: use non-mutating checks or an isolated copy when execution is needed, and disclose limitations.
+
 ### 2. Identify the spec source
 
 Use the user's current explicit intent and accepted conversation requirements first. Supplement them with a supplied spec, linked originating issue/PRD, and relevant repository documents. Fetch tracker context through an existing configured tool when available; do not start setup merely to review.

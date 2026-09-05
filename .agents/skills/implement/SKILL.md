@@ -9,6 +9,8 @@ Use `tdd` for explicit test-first requests and behavior where regression coverag
 
 Run affected tests, relevant type checks, and repository-required checks. Run the full suite when change reach, risk, failures, or unresolved concerns warrant it; do not repeat passing checks without a reason.
 
+Use [verification evidence](../code-review/references/verification-evidence.md) when recording checks, deciding whether a previous result remains applicable, or retrying a partially completed batch.
+
 Before committing, use `code-review` on the actual in-scope staged, unstaged, and untracked changes, with the accepted requirements and starting baseline. Correct actionable findings and rerun affected verification.
 
 Commit only this task's work to the current branch when the user's instructions permit committing. Honor requests to leave changes uncommitted. A local commit does not authorize pushing, publishing, or deployment.
