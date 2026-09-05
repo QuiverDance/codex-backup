@@ -1,7 +1,9 @@
 ---
 name: implement
-description: "Implement a piece of work based on a PRD or set of issues."
+description: Implement an accepted feature, PRD, issue, or concrete set of requirements through relevant verification and review. Use when the user requests implementation of agreed behavior. Simple localized edits can be handled directly; questions, research, and design-only requests do not start this workflow.
 ---
+
+Scale this workflow to the accepted work. A small localized edit does not need a separate review workflow or commit merely because this skill is available. Automatic selection does not grant additional authorization.
 
 Implement the accepted work described by the user, PRD, or issues. Record the starting working-tree state and task file scope so unrelated changes remain separate.
 
@@ -11,6 +13,6 @@ Run affected tests, relevant type checks, and repository-required checks. Run th
 
 Use [verification evidence](../code-review/references/verification-evidence.md) when recording checks, deciding whether a previous result remains applicable, or retrying a partially completed batch.
 
-Before committing, use `code-review` on the actual in-scope staged, unstaged, and untracked changes, with the accepted requirements and starting baseline. Correct actionable findings and rerun affected verification.
+For substantive implementation changes or an explicit review request, use `code-review` before committing on the actual in-scope staged, unstaged, and untracked changes, with the accepted requirements and starting baseline. Correct actionable findings and rerun affected verification.
 
 Commit only this task's work to the current branch when the user's instructions permit committing. Honor requests to leave changes uncommitted. A local commit does not authorize pushing, publishing, or deployment.
