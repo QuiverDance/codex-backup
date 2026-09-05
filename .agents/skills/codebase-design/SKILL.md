@@ -62,7 +62,7 @@ When designing an interface, ask:
 - **Depth is a property of the interface, not the implementation.** A deep module can be internally composed of small, mockable, swappable parts — they just aren't part of the interface. A module can have **internal seams** (private to its implementation, used by its own tests) as well as the **external seam** at its interface.
 - **The deletion test.** Imagine deleting the module. If complexity vanishes, it was a pass-through. If complexity reappears across N callers, it was earning its keep.
 - **The interface is the test surface.** Callers and tests cross the same seam. If you want to test *past* the interface, the module is probably the wrong shape.
-- **One adapter means a hypothetical seam. Two adapters means a real one.** Don't introduce a seam unless something actually varies across it.
+- **Justify seams by real needs.** Variation is one reason; ownership, isolation, or a stable contract may justify a seam with one adapter. Avoid indirection without a concrete benefit.
 
 ## Designing for testability
 
@@ -80,7 +80,7 @@ Good interfaces make testing natural:
    }
    ```
 
-2. **Return results, don't produce side effects.**
+2. **Keep pure calculations simple; preserve required effects.** Returning a calculation is useful, but operations that must persist or act externally must still perform and verify those effects through the intended flow. These examples illustrate calculation design, not a ban on mutation.
 
    ```typescript
    // Testable

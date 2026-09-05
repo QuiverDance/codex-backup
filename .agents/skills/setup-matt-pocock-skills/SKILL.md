@@ -1,7 +1,6 @@
 ---
 name: setup-matt-pocock-skills
-description: Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.
-disable-model-invocation: true
+description: Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Use when the requested workflow needs missing repository configuration; existing configuration can be reused.
 ---
 
 # Setup Matt Pocock's Skills
@@ -29,13 +28,13 @@ Look at the current repo to understand its starting state. Read whatever exists;
 
 ### 2. Present findings and ask
 
-Summarise what's present and what's missing. Then walk the user through the three decisions **one at a time** — present a section, get the user's answer, then move to the next. Don't dump all three at once.
+Summarise what exists and reuse confirmed choices. Ask only about unresolved material choices in the sections below; routine defaults within an authorized setup need no repeated confirmation.
 
 Assume the user does not know what these terms mean. Each section starts with a short explainer (what it is, why these skills need it, what changes if they pick differently). Then show the choices and the default.
 
 **Section A — Issue tracker.**
 
-> Explainer: The "issue tracker" is where issues live for this repo. Skills like `to-issues`, `triage`, `to-prd`, and `qa` read from and write to it — they need to know whether to call `gh issue create`, write a markdown file under `.scratch/`, or follow some other workflow you describe. Pick the place you actually track work for this repo.
+> Explainer: The "issue tracker" is where issues live for this repo. Skills like `to-issues`, `triage`, and `to-prd` read from and write to it — they need to know whether to call `gh issue create`, write a markdown file under `.scratch/`, or follow some other workflow you describe. Pick the place you actually track work for this repo.
 
 Default posture: these skills were designed for GitHub. If a `git remote` points at GitHub, propose that. If a `git remote` points at GitLab (`gitlab.com` or a self-hosted host), propose GitLab. Otherwise (or if the user prefers), offer:
 
@@ -84,13 +83,9 @@ Let them edit before writing.
 
 ### 4. Write
 
-**Pick the file to edit:**
+**Pick the file the current host actually discovers.** For Codex, use the applicable `AGENTS.override.md` when it takes precedence, otherwise `AGENTS.md`; use a different fallback only when configured and verified. For another host, use its documented discovery rules. The existence of `CLAUDE.md` alone does not make it active in Codex. Reuse a shared authoritative source where possible and avoid contradictory duplicate instructions. Creating the host's recognized file is a routine part of authorized setup.
 
-- If `CLAUDE.md` exists, edit it.
-- Else if `AGENTS.md` exists, edit it.
-- If neither exists, ask the user which one to create — don't pick for them.
-
-Never create `AGENTS.md` when `CLAUDE.md` already exists (or vice versa) — always edit the one that's already there.
+Preserve the concrete-draft review above for new configuration decisions; do not ask again about a draft or action already approved.
 
 If an `## Agent skills` block already exists in the chosen file, update its contents in-place rather than appending a duplicate. Don't overwrite user edits to the surrounding sections.
 

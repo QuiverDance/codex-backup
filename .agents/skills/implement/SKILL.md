@@ -1,15 +1,14 @@
 ---
 name: implement
 description: "Implement a piece of work based on a PRD or set of issues."
-disable-model-invocation: true
 ---
 
-Implement the work described by the user in the PRD or issues.
+Implement the accepted work described by the user, PRD, or issues. Record the starting working-tree state and task file scope so unrelated changes remain separate.
 
-Use /tdd where possible, at pre-agreed seams.
+Use `tdd` for explicit test-first requests and behavior where regression coverage is useful. Reuse agreed or obvious existing interfaces; ask only about material unresolved contracts. Complete each slice through the accepted intended flow.
 
-Run typechecking regularly, single test files regularly, and the full test suite once at the end.
+Run affected tests, relevant type checks, and repository-required checks. Run the full suite when change reach, risk, failures, or unresolved concerns warrant it; do not repeat passing checks without a reason.
 
-Once done, use /code-review to review the work.
+Before committing, use `code-review` on the actual in-scope staged, unstaged, and untracked changes, with the accepted requirements and starting baseline. Correct actionable findings and rerun affected verification.
 
-Commit your work to the current branch.
+Commit only this task's work to the current branch when the user's instructions permit committing. Honor requests to leave changes uncommitted. A local commit does not authorize pushing, publishing, or deployment.

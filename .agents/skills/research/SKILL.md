@@ -3,7 +3,7 @@ name: research
 description: Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the user wants a topic researched, docs or API facts gathered, or reading legwork delegated to a background agent.
 ---
 
-Spin up a **background agent** to do the research, so you keep working while it reads.
+Use an available sub-agent for bounded independent research when useful work remains for the parent; otherwise research directly. Respect available slots and tool names. The parent verifies sources and synthesizes the result. Write clear, legible briefs.
 
 Its job:
 

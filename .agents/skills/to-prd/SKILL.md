@@ -1,22 +1,19 @@
 ---
 name: to-prd
 description: Turn the current conversation into a PRD and publish it to the project issue tracker — no interview, just synthesis of what you've already discussed.
-disable-model-invocation: true
 ---
 
 This skill takes the current conversation context and codebase understanding and produces a PRD. Do NOT interview the user — just synthesize what you already know.
 
-The issue tracker and triage label vocabulary should have been provided to you — run `/setup-matt-pocock-skills` if not.
+Reuse the existing tracker and label configuration. If the publication destination is missing, finish the draft and ask only for the information needed to publish; do not force a separate setup workflow.
 
 ## Process
 
 1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the PRD, and respect any ADRs in the area you're touching.
 
-2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
+2. Describe testing at appropriate existing interfaces, reusing accepted decisions without reconfirmation. Prefer coverage of the intended user flow, supplemented by focused tests where useful. Mark material unresolved product or interface decisions explicitly instead of silently inventing them.
 
-Check with the user that these seams match their expectations.
-
-3. Write the PRD using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
+3. Write the PRD using the template below. Publish when the user's request authorizes publication to the known destination. Apply the configured `ready-for-agent` label only when material requirements are settled; unresolved decisions must not be presented as ready. Preserve any explicit user review checkpoint.
 
 <prd-template>
 
@@ -30,7 +27,7 @@ The solution to the problem, from the user's perspective.
 
 ## User Stories
 
-A LONG, numbered list of user stories. Each user story should be in the format of:
+A numbered list of user stories covering the accepted scope. Each user story should be in the format of:
 
 1. As an <actor>, I want a <feature>, so that <benefit>
 
@@ -38,7 +35,7 @@ A LONG, numbered list of user stories. Each user story should be in the format o
 1. As a mobile bank customer, I want to see balance on my accounts, so that I can make better informed decisions about my spending
 </user-story-example>
 
-This list of user stories should be extremely extensive and cover all aspects of the feature.
+Cover the feature without inventing additional scope or duplicating stories.
 
 ## Implementation Decisions
 

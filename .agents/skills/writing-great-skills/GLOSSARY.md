@@ -18,21 +18,15 @@ How a skill is reached — and the two loads you pay for the choice.
 
 ### Model-Invoked
 
-A skill that keeps its **description** field, so the agent can see it and fire it autonomously — and the human can still type its name, so model-invocation always _includes_ user reach. There is no model-only state: a description only ever _adds_ agent discovery, never removes the human's. Pays a permanent **context load** on every turn in exchange for that discoverability. Reachable by other skills, because the description that makes it agent-discoverable makes it invocable. A model-invoked skill whose content is all **reference** is also one home for shared reference: another skill can invoke it, so reference needed by several skills lives in one place. Pick model-invocation only when the agent must reach the skill on its own; if it never fires except by hand, drop the description and pay no context load.
-
-_Avoid_: ability, tool, capability
+A skill eligible for implicit invocation. In Codex this is the default unless `agents/openai.yaml` sets `policy.allow_implicit_invocation: false`. It still requires a clear description and remains explicitly invocable by the user.
 
 ### User-Invoked
 
-A skill with its **description** stripped — invisible to the agent and reachable only by the human typing its name (user-_only_, where **model-invoked** is user-_and-agent_). Trades agent-discoverability for zero **context load**. Because it has no description, nothing but the human can reach it: no other skill can fire it.
-
-_Avoid_: procedure, workflow, command
+A skill reserved for explicit invocation. In Codex it retains required name and description frontmatter and sets `policy.allow_implicit_invocation: false` in `agents/openai.yaml`. Do not equate this policy with deleting its description or guaranteed zero context cost.
 
 ### Description
 
-The skill's machine-readable trigger, and the one **context pointer** a **model-invoked** skill is forced to keep loaded at all times. Its mere presence _is_ the invocation axis: keep it and the skill is model-invoked (and reachable by other skills); delete it and the skill is **user-invoked**, reachable only by the human. The source of a model-invoked skill's **context load**.
-
-_Avoid_: frontmatter, summary
+Required Codex skill metadata explaining its purpose and when to use it. It helps selection; invocation policy is configured separately. Keep it concise and specific.
 
 ### Context Pointer
 
@@ -42,9 +36,7 @@ _Avoid_: link, reference, import
 
 ### Context Load
 
-The cost a **model-invoked** skill imposes on the agent's context window — its **description**, always loaded, spending both tokens and attention. What **user-invoked** skills escape by having no description, and the brake on splitting into more model-invoked skills.
-
-_Avoid_: token cost, context bloat
+The tokens and attention consumed by available metadata and loaded instructions. Actual loading depends on the host; explicit-only policy does not establish a universal zero-cost guarantee.
 
 ### Cognitive Load
 
@@ -54,9 +46,7 @@ _Avoid_: human index, burden, overhead
 
 ### Router Skill
 
-A **user-invoked** skill whose job is to point at your other user-invoked skills — naming each and when to reach for it — so the human has one skill to remember instead of many. It can only hint, never fire them: user-invoked skills have no **description**, so nothing but the human can reach them. The cure for **cognitive load** when user-invoked skills multiply.
-
-_Avoid_: dispatcher, menu, registry, index, router procedure
+A skill that helps the user choose an appropriate workflow. Routing suggestions respect invocation policy and do not authorize unrelated actions.
 
 ### Granularity
 
@@ -94,9 +84,7 @@ _Avoid_: supporting material, docs, background
 
 ### External Reference
 
-**Reference** that lives outside the skill system — a plain file, no **description**, no **steps**, not invocable — that any skill can point at. The home for shared reference that needn't fire on its own, and the only shared home two **user-invoked** skills can use, since neither has a description and so neither can fire the other.
-
-_Avoid_: doc, resource, knowledge base
+Supporting material outside the main skill instructions, read when relevant. It can be shared by multiple skills without invoking another workflow. Its location or lack of skill metadata does not confer execution authority.
 
 ### Progressive Disclosure
 
@@ -157,6 +145,12 @@ _Avoid_: horizon, fog of war, lookahead
 _Failure mode._ Ending the current step before it is genuinely done, because the agent's attention slips to being done rather than to the work. A between-steps failure: it needs **steps** to occur — a skill with no steps that quits early isn't premature completion but thin **legwork** under an unmet demand. A tug-of-war between two forces: visible **post-completion steps** (the pull forward) and the **completion criterion**'s clarity (the resistance — a sharp, checkable bar holds; a vague one gives way). Fuzziness is the necessary condition: a sharp bound resists the pull no matter how many later steps are visible, so a step that never rushes needs no defending. Two levers hold a step that does, but reach for them in order: **sharpen the bound first** — it is local and cheap. Only when the criterion is irreducibly fuzzy _and_ you actually observe the rush do you **hide the later steps** — and hiding only works across a real context boundary (a user-invoked hand-off or a subagent dispatch; an inline model-invoked call leaves the later steps in context and clears nothing). One cause of thin legwork, but distinct from it: legwork can be thin even when a step runs to full completion.
 
 _Avoid_: premature closure, the rush, rushing, shortcutting
+
+### Negation
+
+_Failure mode._ Steering by prohibition — telling the agent what _not_ to do — which drags the forbidden behaviour into context and makes it _more_ available, not less. _Don't think of an elephant_, and the elephant is all there is; _never write verbose comments_, and verbosity is the pattern the agent has just read. The negation is a weak modifier the strongly-activated concept overruns, so the ban half-reads as an instruction to do the thing. Its **leading word** is the _elephant_: whatever a prohibition names into the frame. Cure: prompt the **positive** — describe the target behaviour ("write one-line comments") so the banned one is never spoken. A prohibition earns its place only as a hard guardrail on a behaviour you cannot phrase positively; even then, pair it with the positive target so attention lands on what to do.
+
+_Avoid_: ironic rebound, don't-prompting, the pink elephant
 
 ## Pruning
 

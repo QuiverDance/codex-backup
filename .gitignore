@@ -13,3 +13,7 @@
 !.agents/.skill-lock.json
 !.agents/skills/
 !.agents/skills/**
+
+.agents/skills/.system/
+**/__pycache__/
+**/*.pyc

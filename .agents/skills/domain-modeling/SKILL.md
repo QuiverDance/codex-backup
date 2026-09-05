@@ -41,6 +41,8 @@ Create files lazily — only when you have something to write. If no `CONTEXT.md
 
 ## During the session
 
+Reuse settled terminology and architectural decisions. Ask when ambiguity changes domain meaning, behavior, or a material contract; resolve routine naming choices within accepted meaning without repeated confirmation.
+
 ### Challenge against the glossary
 
 When the user uses a term that conflicts with the existing language in `CONTEXT.md`, call it out immediately. "Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"
