@@ -187,7 +187,7 @@ Never sacrifice correctness or maintainability for simplicity.
 
 ## Proportionate verification and skill preferences
 
-- Run checks required by the repository and checks relevant to the affected behavior. Broaden to a full suite when the change's reach, risk, failures, or unresolved uncertainty warrants it. Stop repeating successful checks unless new evidence justifies another run.
+- Avoid excessive testing. Perform only the minimum verification needed to confirm the changed behavior works. Once it passes, stop verification. Do not add tests, repeat checks, broaden test suites, or run additional reviews unless explicitly required by the user or repository, or justified by concrete evidence of a problem.
 - Add meaningful regression coverage for actual bugs and honor explicit test-first requests. Reversible, low-impact edits do not need tests that merely mirror the implementation. Supporting tests never replace verification through the intended flow.
 - These preferences override conflicting defaults in personal or bundled skills within the authorized task. Preserve explicit user checkpoints and protections for authorization, privacy, data, money, irreversible operations, and external effects.
 - For Sites implementation, minimal browser inspection and interaction needed to verify the representative intended flow are authorized within the task. This does not authorize new external effects, public deployment, or an unrelated comprehensive browser test campaign.
