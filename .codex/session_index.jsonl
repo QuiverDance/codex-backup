@@ -1,5 +1,5 @@
+{"id":"01a08519-cdd5-7bd2-8d8c-181a91ece635","thread_name":"Restore Codex backup settings","updated_at":"2026-09-09T07:37:45.967538377Z"}
 {"id":"01a07fab-3096-7e40-9277-1aa6ae2c8f16","thread_name":"Explain Codex Queue 기능","updated_at":"2026-09-08T06:18:44.638873298Z"}
-{"id":"01a03c0e-ba4f-76d3-a130-6b9078641f0f","thread_name":"Restore Codex conversations","updated_at":"2026-08-26T03:13:59.776691986Z"}
 {"id":"01a032b1-ad6d-7bc2-a677-1004af67a370","thread_name":"KV 압축 성능 재실험","updated_at":"2026-08-24T07:35:05.178823871Z"}
 {"id":"01a03c17-4b25-7180-99e5-de0758c74704","thread_name":"KV 압축 성능 재실험","updated_at":"2026-08-26T03:22:34.853228315Z"}
 {"id":"01a03c17-4b25-7180-99e5-de0758c74704","thread_name":"KV 압축 성능 재실험 (2)","updated_at":"2026-08-26T03:22:37.513011948Z"}
@@ -12,3 +12,5 @@
 {"id":"01a06c07-aea4-7fa1-80e9-573e0eaa33b6","thread_name":"breakdown 시간 집계 오류 수정","updated_at":"2026-09-04T10:48:38.318002548Z"}
 {"id":"01a07fb9-543d-72c2-9366-98cd665fc7c9","thread_name":"요청 종료 KV 비용 검증","updated_at":"2026-09-08T06:34:16.901145744Z"}
 {"id":"01a0804c-c18d-7413-9e88-a239e5abd509","thread_name":"개선 코드 검토 및 추가 아이디어","updated_at":"2026-09-08T09:15:14.241510671Z"}
+{"id":"01a08540-877c-7f62-b726-3332e4b109c2","thread_name":"서빙 실험 SLO 확인","updated_at":"2026-09-09T08:20:21.868270012Z"}
+{"id":"01a0854a-1874-7852-9164-5284d16345df","thread_name":"Analyze CPU encode impact","updated_at":"2026-09-09T08:30:26.372513666Z"}
