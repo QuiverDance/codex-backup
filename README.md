@@ -62,3 +62,21 @@ codex features list
 - 2026-09-06: 원본 Windows 환경의 Codex CLI `0.153.4`에서 영구 설정 후 `context_management`가 `true`로 인식됨을 확인했습니다. 컨텍스트 크기는 변경하지 않았습니다. 다른 원격 환경은 별도로 적용 및 확인해야 합니다.
 - [공식 설정 안내](https://learn.chatgpt.com/docs/config-file/config-basic)
 - [공식 설정 레퍼런스](https://learn.chatgpt.com/docs/config-file/config-reference)
+
+## 서브 에이전트 사용 줄이기 / 기능 끄기
+
+개인 `AGENTS.md`는 기본적으로 작업을 직접 처리하고 서브 에이전트 호출을 피하도록 합니다. 스킬에 병렬 에이전트 절차가 있어도 그것만으로 호출하지 않고, 가능한 경우 직접 수행합니다. 사용자가 명시적으로 요청하거나 큰 독립 작업에서 추가 비용을 정당화할 때만 예외적으로 사용합니다.
+
+호출 기능 자체를 끄고 싶다면 실제 Codex 실행 호스트의 사용자 `config.toml`에 다음을 설정합니다. 기존 `[features]`가 있으면 해당 테이블 안의 값만 추가 또는 수정하고, 테이블을 중복 생성하지 않습니다.
+
+```toml
+[features]
+multi_agent = false
+```
+
+이 설정은 공식 문서에 명시된 멀티 에이전트 도구 비활성화 옵션입니다. 원격 VS Code/SSH/WSL에서도 실제 실행 환경의 설정에 적용해야 합니다. 앱이나 확장을 다시 로드하고 새 작업에서 확인하세요. 같은 실행 환경의 `codex features list`에서 `multi_agent`가 `false`인지 확인할 수 있습니다. 이는 CLI 설정 확인이며 다른 호스트나 실행 중인 세션까지 차단되었다는 보장은 아닙니다.
+
+README는 설정 방법을 안내할 뿐 자동 적용하지 않습니다. 2026-09-09 이번 변경에서는 README와 개인 지침만 수정했으며, 로컬 `config.toml`의 기능 스위치는 변경하지 않았습니다. 비활성화된 기능을 에이전트가 임의로 다시 켜지 않도록 개인 지침에도 명시했습니다.
+
+- [공식 서브 에이전트 안내](https://learn.chatgpt.com/docs/agent-configuration/subagents)
+- [공식 설정 레퍼런스](https://learn.chatgpt.com/docs/config-file/config-reference)

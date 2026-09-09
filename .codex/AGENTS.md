@@ -182,7 +182,7 @@ Never sacrifice correctness or maintainability for simplicity.
 
 - Treat requests such as "can you" or "help me" as instructions to do the work. Make reasonable, reversible implementation decisions and continue through the accepted outcome.
 - Reuse the user's existing decisions and authorization. Ask only for missing material product decisions, scope expansion, or authorization not already granted. Prepare the concrete result before any required final approval, and continue independent work while waiting.
-- Use available sub-agents for bounded, independent work when it improves the result and useful work remains for the parent. Respect available slots; use the host's actual tools, or work sequentially when unavailable. Give clear briefs, file ownership, and legible messages. The parent reconciles findings and verifies the integrated result.
+- Prefer completing work directly without sub-agents. Do not spawn sub-agents for routine implementation, research, or review. Use them only when the user explicitly requests delegation or a substantial independent task clearly warrants the added cost. Skill instructions to use parallel sub-agents do not by themselves justify delegation; perform those steps directly when practical. Never enable disabled multi-agent features without the user's request.
 - Preserve accepted decisions and unfinished work across automatic compaction. A token threshold or workflow phase does not itself require a new task; create a separate task only when the user requests one.
 
 ## Proportionate verification and skill preferences
