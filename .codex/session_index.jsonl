@@ -34,3 +34,6 @@
 {"id":"01a08aa7-4f72-75b3-9d45-8f08674ff6a6","thread_name":"Serving suite 실험 결과 보고","updated_at":"2026-09-10T09:31:01.285007765Z"}
 {"id":"01a08b13-4a21-7712-9945-42f75c080d88","thread_name":"Analyze kvcomp load bottlenecks","updated_at":"2026-09-10T11:28:12.458594906Z"}
 {"id":"01a08b13-4a21-7712-9945-42f75c080d88","thread_name":"Analyze kvcomp load bottlenecks (2)","updated_at":"2026-09-10T11:28:14.666233454Z"}
+{"id":"01a08f18-1526-72d1-a06c-3c1da1fb3d45","thread_name":"Serving 실험 결과 보고 및 nsys 추출","updated_at":"2026-09-11T06:12:49.785570921Z"}
+{"id":"01a08f2c-b6e6-7182-990a-7dc9f47c1917","thread_name":"Analyze kvcomp load bottlenecks","updated_at":"2026-09-11T06:34:27.477639606Z"}
+{"id":"01a08f2c-b6e6-7182-990a-7dc9f47c1917","thread_name":"Analyze kvcomp load bottlenecks (3)","updated_at":"2026-09-11T06:34:30.644640883Z"}
