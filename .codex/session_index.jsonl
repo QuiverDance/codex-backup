@@ -37,3 +37,29 @@
 {"id":"01a08f18-1526-72d1-a06c-3c1da1fb3d45","thread_name":"Serving 실험 결과 보고 및 nsys 추출","updated_at":"2026-09-11T06:12:49.785570921Z"}
 {"id":"01a08f2c-b6e6-7182-990a-7dc9f47c1917","thread_name":"Analyze kvcomp load bottlenecks","updated_at":"2026-09-11T06:34:27.477639606Z"}
 {"id":"01a08f2c-b6e6-7182-990a-7dc9f47c1917","thread_name":"Analyze kvcomp load bottlenecks (3)","updated_at":"2026-09-11T06:34:30.644640883Z"}
+{"id":"01a08519-cdd5-7bd2-8d8c-181a91ece635","thread_name":"Restore Codex backup settings","updated_at":"2026-09-16T03:51:15.20615311Z"}
+{"id":"01a07fab-3096-7e40-9277-1aa6ae2c8f16","thread_name":"Explain Codex Queue 기능","updated_at":"2026-09-16T03:51:15.213993448Z"}
+{"id":"01a032b1-ad6d-7bc2-a677-1004af67a370","thread_name":"KV 압축 성능 재실험","updated_at":"2026-09-16T03:51:15.216291392Z"}
+{"id":"01a03c17-4b25-7180-99e5-de0758c74704","thread_name":"KV 압축 성능 재실험 (2)","updated_at":"2026-09-16T03:51:15.218798938Z"}
+{"id":"01a03c92-4b69-71b0-b263-c43967e70d38","thread_name":"오프라인 실험 워크로드 확인","updated_at":"2026-09-16T03:51:15.220903504Z"}
+{"id":"01a03d13-635e-7550-914d-cb9bbed50690","thread_name":"기존 압축 실험 코드 찾기","updated_at":"2026-09-16T03:51:15.223019846Z"}
+{"id":"01a03d78-e8fd-7022-a4fa-9510f9e8f4df","thread_name":"서빙 실험 옵션 분석","updated_at":"2026-09-16T03:51:15.225007195Z"}
+{"id":"01a05669-fc4c-7aa0-b9a1-034d833ed8ed","thread_name":"압축 codec 실험의 cd3 확인","updated_at":"2026-09-16T03:51:15.22685947Z"}
+{"id":"01a05ca8-8464-73e2-8414-a95b4cccb986","thread_name":"Diagnose offline suite error","updated_at":"2026-09-16T03:51:15.228875075Z"}
+{"id":"01a06b18-44c5-7ed2-95c2-8eb21cab65fa","thread_name":"GH200 KVCOMP 병목 검증 실행","updated_at":"2026-09-16T03:51:15.230780791Z"}
+{"id":"01a06c07-aea4-7fa1-80e9-573e0eaa33b6","thread_name":"breakdown 시간 집계 오류 수정","updated_at":"2026-09-16T03:51:15.232890061Z"}
+{"id":"01a07fb9-543d-72c2-9366-98cd665fc7c9","thread_name":"요청 종료 KV 비용 검증","updated_at":"2026-09-16T03:51:15.234858882Z"}
+{"id":"01a0804c-c18d-7413-9e88-a239e5abd509","thread_name":"개선 코드 검토 및 추가 아이디어","updated_at":"2026-09-16T03:51:15.236809078Z"}
+{"id":"01a08540-877c-7f62-b726-3332e4b109c2","thread_name":"서빙 실험 SLO 확인","updated_at":"2026-09-16T03:51:15.238866635Z"}
+{"id":"01a0854a-1874-7852-9164-5284d16345df","thread_name":"Analyze CPU encode impact","updated_at":"2026-09-16T03:51:15.240776863Z"}
+{"id":"01a08995-af24-7ba3-8534-44defb07c5ea","thread_name":"CD3 KVCMOP GPU 스레드 256 설정","updated_at":"2026-09-16T03:51:15.242818517Z"}
+{"id":"01a089b3-533f-7bc1-9f91-26ac8e33b970","thread_name":"Analyze kvcomp load bottlenecks","updated_at":"2026-09-16T03:51:15.244833098Z"}
+{"id":"01a08aa7-4f72-75b3-9d45-8f08674ff6a6","thread_name":"Serving suite 실험 결과 보고","updated_at":"2026-09-16T03:51:15.24678451Z"}
+{"id":"01a08b13-4a21-7712-9945-42f75c080d88","thread_name":"Analyze kvcomp load bottlenecks (2)","updated_at":"2026-09-16T03:51:15.248777811Z"}
+{"id":"01a08f18-1526-72d1-a06c-3c1da1fb3d45","thread_name":"Serving 실험 결과 보고 및 nsys 추출","updated_at":"2026-09-16T03:51:15.250823112Z"}
+{"id":"01a08f2c-b6e6-7182-990a-7dc9f47c1917","thread_name":"Analyze kvcomp load bottlenecks (3)","updated_at":"2026-09-16T03:51:15.252811005Z"}
+{"id":"01a0a865-cf7c-7420-973b-378af67e019a","thread_name":"전송량 감소 후 성능 정체 분석","updated_at":"2026-09-16T04:07:28.916651737Z"}
+{"id":"01a0a8e7-7039-7452-afbe-77794c407dc8","thread_name":"전송량 감소 후 성능 정체 분석","updated_at":"2026-09-16T06:28:55.114471882Z"}
+{"id":"01a0a8e7-7039-7452-afbe-77794c407dc8","thread_name":"전송량 감소 후 성능 정체 분석 (2)","updated_at":"2026-09-16T06:28:57.088859964Z"}
+{"id":"01a0a924-a9da-7b62-bb87-fa281e965fe7","thread_name":"cd3 kvcomp 4bit 압축 실험","updated_at":"2026-09-16T07:36:32.113696853Z"}
+{"id":"01a0a9c2-b5c9-7030-816e-a05adae1550e","thread_name":"offline/serving breakdown 세분화 추가","updated_at":"2026-09-16T10:28:46.621425227Z"}
