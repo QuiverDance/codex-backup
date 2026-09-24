@@ -1,4 +1,4 @@
-{"id":"01a0cc32-2fe5-7053-aa16-5fee5192a875","thread_name":"Restore codex-backup history","updated_at":"2026-09-23T02:58:49.297148259Z"}
+{"id":"01a0d21d-763e-7541-b117-e616c072685a","thread_name":"SSH 로그인 후 백업 복원 및 셋업","updated_at":"2026-09-24T06:32:27.296082842Z"}
 {"id":"01a08519-cdd5-7bd2-8d8c-181a91ece635","thread_name":"Restore Codex backup settings","updated_at":"2026-09-09T07:37:45.967538377Z"}
 {"id":"01a07fab-3096-7e40-9277-1aa6ae2c8f16","thread_name":"Explain Codex Queue 기능","updated_at":"2026-09-08T06:18:44.638873298Z"}
 {"id":"01a032b1-ad6d-7bc2-a677-1004af67a370","thread_name":"KV 압축 성능 재실험","updated_at":"2026-08-24T07:35:05.178823871Z"}
@@ -119,3 +119,4 @@
 {"id":"01a0aeff-d716-7ae1-b749-543178aa6740","thread_name":"서빙 실험 SLO ATT 요약","updated_at":"2026-09-23T03:02:18.531089261Z"}
 {"id":"01a0af1c-6018-7283-adbd-be39fd433de8","thread_name":"서빙 실험 SLO 달성 보고","updated_at":"2026-09-23T03:02:18.53317309Z"}
 {"id":"01a0cc3d-dc91-7613-92d5-a923b3a4b3a4","thread_name":"Hybrid entries 전송 최적화","updated_at":"2026-09-23T03:10:06.146035538Z"}
+{"id":"01a0d22d-ba34-7dd1-9211-bd74a2d08436","thread_name":"Review cd3 handoff archive","updated_at":"2026-09-24T06:50:58.83895413Z"}
