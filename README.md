@@ -15,7 +15,7 @@ Codex 기본 스킬, 플러그인 캐시, 메모리, 인증 정보 및 전체 `c
 1. `https://github.com/QuiverDance/codex-backup`의 `setup` 브랜치를 다운로드하거나 기존 체크아웃을 안전하게 갱신합니다. 기존 미커밋 변경을 덮어쓰지 않습니다.
 2. 실제 Codex 실행 호스트, 사용자, `CODEX_HOME` 및 개인 스킬 경로를 확인합니다. 대상 `AGENTS.md`, 덮어쓸 개인 스킬, `config.toml`은 저장소 밖에 백업합니다.
 3. 저장소의 `.codex/AGENTS.md`를 해당 Codex 홈에 설치하고, `.agents/skills/`의 개인 스킬과 지원 파일을 대상 개인 스킬 경로에 설치합니다. 스킬의 자동·수동 호출 메타데이터도 보존합니다. 저장소에 없는 기존 스킬과 Codex 기본 스킬, 플러그인은 삭제하지 않습니다.
-4. 아래 절차에 따라 지원되는 환경의 `config.toml`을 병합 수정합니다: `model_context_window = 512000`, `features.context_management.experimental_mode = true`, `features.multi_agent = false`. 모델이 512k를 지원하지 않으면 해당 값은 강제하지 않고 제약을 보고합니다. 그 밖의 설정과 인증 정보는 보존합니다.
+4. 아래 절차에 따라 지원되는 환경의 `config.toml`을 병합 수정합니다: `model_context_window = 400000`, `features.context_management.experimental_mode = true`, `features.multi_agent = false`. 모델이 400k를 지원하지 않으면 해당 값은 강제하지 않고 제약을 보고합니다. 그 밖의 설정과 인증 정보는 보존합니다.
 5. 설치 파일과 변경한 설정만 최소한으로 확인합니다. CLI가 있으면 같은 실행 환경에서 기능 상태를 확인합니다. 지원되지 않는 설정이나 권한 문제는 정확히 보고하고, 가능한 독립 설치 작업은 완료합니다.
 6. 설치 위치, 적용한 설정, 적용하지 못한 항목, 필요한 앱/확장 재시작을 짧게 보고합니다. 실행 중인 앱을 임의로 종료하거나 인증 정보를 저장소에 올리지 않습니다.
 
@@ -35,7 +35,7 @@ Codex 기본 스킬, 플러그인 캐시, 메모리, 인증 정보 및 전체 `c
 
 업데이트할 때는 의도한 개인 지침, 개인 스킬, README만 명시적으로 스테이징하고 변경 내용을 확인한 뒤 커밋합니다.
 
-## 512k 컨텍스트 설정 및 실험적 컨텍스트 관리 켜기
+## 400k 컨텍스트 설정 및 실험적 컨텍스트 관리 켜기
 
 이 항목은 위 README 설치 요청에 포함되는 절차입니다. Codex가 실제 설정 파일을 수정해야 적용됩니다.
 
@@ -45,13 +45,13 @@ Codex 기본 스킬, 플러그인 캐시, 메모리, 인증 정보 및 전체 `c
 
 ```toml
 # 최상위 설정: 다른 테이블보다 앞에 둡니다.
-model_context_window = 512000
+model_context_window = 400000
 
 [features.context_management]
 experimental_mode = true
 ```
 
-4. 컨텍스트 크기는 `model_context_window = 512000`으로 설정합니다(512k = 512,000 토큰). 이 키는 TOML 최상위에 두고, 기존 값이 있으면 수정합니다. 자동 압축 임계값(`model_auto_compact_token_limit`)은 별도 요청이 없으면 기존 값 또는 모델 기본값을 유지합니다.
+4. 컨텍스트 크기는 `model_context_window = 400000`으로 설정합니다(400k = 400,000 토큰). 이 키는 TOML 최상위에 두고, 기존 값이 있으면 수정합니다. 자동 압축 임계값(`model_auto_compact_token_limit`)은 별도 요청이 없으면 기존 값 또는 모델 기본값을 유지합니다.
 5. 앱 또는 VS Code 창을 다시 로드하고 새 작업에서 사용합니다. 이미 실행 중인 작업이 즉시 새 설정을 적용했다고 가정하지 않습니다.
 6. 같은 호스트, 사용자, Codex 홈을 사용하는 CLI가 있다면 다음 명령으로 지원 여부와 설정 인식을 확인합니다.
 
