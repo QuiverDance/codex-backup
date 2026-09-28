@@ -120,3 +120,5 @@
 {"id":"01a0af1c-6018-7283-adbd-be39fd433de8","thread_name":"서빙 실험 SLO 달성 보고","updated_at":"2026-09-23T03:02:18.53317309Z"}
 {"id":"01a0cc3d-dc91-7613-92d5-a923b3a4b3a4","thread_name":"Hybrid entries 전송 최적화","updated_at":"2026-09-23T03:10:06.146035538Z"}
 {"id":"01a0d22d-ba34-7dd1-9211-bd74a2d08436","thread_name":"Review cd3 handoff archive","updated_at":"2026-09-24T06:50:58.83895413Z"}
+{"id":"01a0e866-da42-75f1-97c9-2d5c4ff615c1","thread_name":"codex-backup setup 브랜치 설정","updated_at":"2026-09-28T14:25:04.875863075Z"}
+{"id":"01a0e904-48d0-7b41-8c50-8aa164184bd1","thread_name":"1.4 오류 발생 request 찾기","updated_at":"2026-09-28T17:16:43.832934582Z"}
