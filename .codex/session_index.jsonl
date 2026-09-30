@@ -123,3 +123,5 @@
 {"id":"01a0e904-48d0-7b41-8c50-8aa164184bd1","thread_name":"1.4 오류 발생 request 찾기","updated_at":"2026-09-28T17:16:43.832934582Z"}
 {"id":"01a0ec30-4959-7ee3-93fd-c55df11ac0c3","thread_name":"TieredServe 16 KiB 페이지 구현","updated_at":"2026-09-29T08:03:07.963805373Z"}
 {"id":"01a0ece4-47f5-71a1-9454-fb7c8bcd2dfa","thread_name":"Apply tieredserve nsys CSR patch","updated_at":"2026-09-29T11:19:44.763763359Z"}
+{"id":"01a0f0a9-9a38-7db0-b5dd-1a953e550724","thread_name":"CSR 전송 구조 단순화 제안","updated_at":"2026-09-30T04:54:07.773157243Z"}
+{"id":"01a0f0ea-6687-7d02-8731-d0e70225da1a","thread_name":"Find KVComp CSR benchmark command","updated_at":"2026-09-30T06:04:53.51508049Z"}
